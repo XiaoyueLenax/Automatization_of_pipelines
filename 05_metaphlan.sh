@@ -1,0 +1,1 @@
+metaphlan <input.sam> --input_type sam --nproc <num_threads> --output_file <output_profile.txt>

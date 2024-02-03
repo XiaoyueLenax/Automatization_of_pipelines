@@ -1,0 +1,1 @@
+bowtie2 -x <index> -1 <input_R1.trimmed.fastq> -2 <input_R2.trimmed.fastq> -S <output.sam>

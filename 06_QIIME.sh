@@ -1,0 +1,1 @@
+qiime <command> --input-file <input_file> --output-dir <output_directory>

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+#SBATCH --cpus-per-task=8
+#SBATCH --mem=60GB
+#SBATCH --time=13:00:00
+#SBATCH --job-name=jelly_fish
+#SBATCH --mail-user=xiaoyue.deng@students.unibe.ch
+#SBATCH --mail-type=end
+#SBATCH --output=/storage/scratch/users/xd22m086/90_output_error/output/output_jelly_fish_%j.o
+#SBATCH --error=/storage/scratch/users/xd22m086/90_output_error/error/error_jelly_fish_%j.e
+#SBATCH --partition=epyc2
+
+
+module load vital-it/7
+module load Anaconda3
+module add UHTS/Analysis/jellyfish/2.3.0
+
+sample_name=("Human1" "Human2" "Human3")
+for data_type in "${sample_name[@]}"; do
+    jellyfish count -C -m 19 -s 5G -t 8 -o /storage/scratch/users/xd22m086/02_human_reads/all_in_one/jellyfish/$data_type.jf <(zcat /storage/scratch/users/xd22m086/02_human_reads/${data_type}*.fastq.gz)
+    jellyfish histo -t 8 /storage/scratch/users/xd22m086/02_human_reads/all_in_one/jellyfish/$data_type.jf > /storage/scratch/users/xd22m086/02_human_reads/all_in_one/jellyfish/${data_type}.histo
+done
