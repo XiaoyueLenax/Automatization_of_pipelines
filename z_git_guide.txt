@@ -1,0 +1,22 @@
+# Inside your repository directory
+git init
+git add *
+git commit -m "initial commit"
+
+# Add the remote URL
+git remote add origin https://github.com/<USERNAME>/<REPOSITORY_NAME>.git
+
+# Push your local repository to GitHub
+git push -u origin master
+
+#Example
+# Inside your repository directory
+git init
+git add *
+git commit -m "initial commit"
+
+# Add the remote URL
+git remote add origin https://github.com/<USERNAME>/<REPOSITORY_NAME>.git
+
+# Push your local repository to GitHub
+git push -u origin master
